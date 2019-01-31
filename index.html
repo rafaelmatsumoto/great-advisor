@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Exercises JS</title>
+    <style>
+      body{
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    
+      .btn{
+        width: 10rem;
+        height: 2rem;
+        border-radius: 5px;
+        background-color: #555555;
+        color: #ffffff;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <button type="button" class="btn" name="button" id="search"> Give me an advice </button>
+    <p id="quote"></p>
+  
+  <script type="text/javascript">
+    
+    document.getElementById('search').addEventListener("click", async () => {
+      const URL_TO_FETCH = `https://api.adviceslip.com/advice`;
+      const response = await fetch(URL_TO_FETCH);
+      const responseJson = await response.json();
+      document.getElementById('quote').innerHTML = responseJson.slip.advice;
+    });
+  
+  </script>
+  </body>
+</html>
